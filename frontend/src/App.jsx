@@ -15,17 +15,19 @@ import Analyzer from './pages/Analyzer'
 import Report from './pages/Report.jsx'
 import ReportHistory from './pages/ReportHistory.jsx'
 import { AnalysisProvider } from './context/AnalysisContext.jsx'
+import SkillGapLearning from './pages/SkillGapLearning.jsx'
+import About from './pages/About.jsx'
+import ResumeMatchInsights from './pages/ResumeMatchInsights.jsx'
 
 const App = () => {
   const dispatch = useDispatch()
-  // Auth state se loading nikaal lo
   const { loading } = useSelector((state) => state.auth)
 
   const getUserData = async () => {
     const token = localStorage.getItem("token")
     
     if (!token) {
-      dispatch(setLoading(false)) // Agar token nahi hai, toh loading band karo
+      dispatch(setLoading(false)) 
       return
     }
 
@@ -38,7 +40,6 @@ const App = () => {
       console.log("Auth Check Error:", error.message)
       localStorage.removeItem("token")
     } finally {
-      // 🚀 Sabse zaruri line: Spinner ko stop karne ke liye
       dispatch(setLoading(false)) 
     }
   }
@@ -47,7 +48,6 @@ const App = () => {
     getUserData()
   }, [])
 
-  // Jab tak loading true hai, ek simple loading spinner dikhao
   if (loading) {
     return (
       <div className="h-screen w-full flex items-center justify-center bg-white">
@@ -71,11 +71,13 @@ const App = () => {
           <Route path='reports' element={<ReportHistory />} />
           <Route path='interview/:interviewId' element={<Report />} />
           <Route path='builder/:resumeId' element={<ResumeBuilder />} />
+          <Route path="/app/insights" element={<ResumeMatchInsights/>} />
+          <Route path="/app/learning" element={<SkillGapLearning />} />
+          <Route path="/app/about" element={<About />} />
         </Route>
 
         <Route path='/view/:resumeId' element={<Preview />} />
         
-        {/* Fallback route */}
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </AnalysisProvider>
