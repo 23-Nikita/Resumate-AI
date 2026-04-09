@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 // ArrowLeft icon add kiya hai
-import { LayoutGrid, FileText, BarChart3, ShieldCheck, Share2, Lightbulb, ArrowLeft ,Clock} from 'lucide-react'
+import { LayoutGrid, FileText, BarChart3, ShieldCheck, Share2, Lightbulb, ArrowLeft ,Clock,BookOpen,Info} from 'lucide-react'
 import { useAnalysis } from '../hooks/useAnalysis';
 
 const SelectionPage = () => {
@@ -24,35 +24,35 @@ const SelectionPage = () => {
             bg: "bg-indigo-50"
         },
         {
-            title: "ATS Optimization",
-            desc: "Ensure your resume passes through recruiter filters easily.",
-            icon: <BarChart3 className="text-yellow-500" />,
-            path: "/app/analyzer", 
-            bg: "bg-yellow-50"
-        },
-        {
     title: "Recent Reports",
     desc: latestReport 
         ? `Last Match: ${latestReport.matchScore}% Found` 
         : "View your previous analysis history here.",
     icon: <Clock className="text-emerald-500" />,
-    path: "/app/reports", // <-- Isko change kiya
+    path: "/app/reports", 
     bg: "bg-emerald-50"
 },
+{
+        title: "Resume Match Insights",
+        desc: "Visual breakdown of how your resume matches job requirements.",
+        icon: <BarChart3 className="text-yellow-500" />,
+        path: "/app/insights",
+        bg: "bg-yellow-50"
+    },
         {
-            title: "Instant Sharing",
-            desc: "Generate a live link to share your resume with employers.",
-            icon: <Share2 className="text-purple-500" />,
-            path: "/app/builder",
-            bg: "bg-purple-50"
-        },
-        {
-            title: "AI Skill Suggester",
-            desc: "Not sure what to add? Let AI suggest skills based on your role.",
-            icon: <Lightbulb className="text-pink-500" />,
-            path: "/app/builder",
-            bg: "bg-pink-50"
-        }
+        title: "Skill Gap Learning",
+        desc: "Recommended resources to improve missing skills.",
+        icon: <BookOpen className="text-purple-500" />,
+        path: "/app/learning",
+        bg: "bg-purple-50"
+    },
+    {
+        title: "About ResuMate AI",
+        desc: "Learn how ResuMate AI helps analyze resumes and improve job match.",
+        icon: <Info className="text-pink-500" />,
+        path: "/app/about",
+        bg: "bg-pink-50"
+    }
     ]
 
     return (
