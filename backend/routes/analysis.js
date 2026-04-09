@@ -1,6 +1,6 @@
 import express from "express";
 import protect from "../middlewares/authMiddleware.js"
-import {analysisController, getAnalysisReportbyIdController , getAllAnalysisReportController,generateResumePdfController} from "../controllers/aiController.js"
+import {analysisController, getAnalysisReportbyIdController , getAllAnalysisReportController,generateResumePdfController,deleteAnalysisController} from "../controllers/aiController.js"
 import upload from '../configs/multer.js'
 
 
@@ -12,8 +12,8 @@ analysisRouter.get("/report/:interviewId",  protect, getAnalysisReportbyIdContro
 
 analysisRouter.get("/" , protect , getAllAnalysisReportController)
 
-// analysisRouter.post("/resume/pdf/:interviewReportId", protect ,generateResumePdfController )
 analysisRouter.get("/resume/pdf/:interviewReportId", protect, generateResumePdfController);
 
+analysisRouter.delete("/:id", protect, deleteAnalysisController);
 
 export default analysisRouter;
