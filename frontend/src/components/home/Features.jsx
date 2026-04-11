@@ -1,209 +1,82 @@
-// import React from 'react'
-// import { Brain, Zap, Shield, FileText, Share2, Sparkles } from 'lucide-react';
-// import Title from './Title';
-
-// const Features = () => {
-//   const featureList = [
-//     {
-//       title: "AI Resume Analyzer",
-//       desc: "Get real-time feedback and scoring based on your job target.",
-//       icon: <Brain className="size-6 text-indigo-600" />,
-//       bg: "bg-indigo-50",
-//       border: "border-indigo-100"
-//     },
-//     {
-//       title: "ATS Optimization",
-//       desc: "Our AI ensures your resume passes through recruiter filters easily.",
-//       icon: <Zap className="size-6 text-amber-600" />,
-//       bg: "bg-amber-50",
-//       border: "border-amber-100"
-//     },
-//     {
-//       title: "Privacy First",
-//       desc: "Your data is encrypted and safe with bank-grade security protocols.",
-//       icon: <Shield className="size-6 text-green-600" />,
-//       bg: "bg-green-50",
-//       border: "border-green-100"
-//     },
-//     {
-//       title: "Smart Templates",
-//       desc: "Professional layouts designed by recruiters for maximum impact.",
-//       icon: <FileText className="size-6 text-blue-600" />,
-//       bg: "bg-blue-50",
-//       border: "border-blue-100"
-//     },
-//     {
-//       title: "Instant Sharing",
-//       desc: "Generate a live link to share your resume with employers instantly.",
-//       icon: <Share2 className="size-6 text-purple-600" />,
-//       bg: "bg-purple-50",
-//       border: "border-purple-100"
-//     },
-//     {
-//       title: "AI Skill Suggester",
-//       desc: "Not sure what to add? Let AI suggest skills based on your role.",
-//       icon: <Sparkles className="size-6 text-rose-600" />,
-//       bg: "bg-rose-50",
-//       border: "border-rose-100"
-//     }
-//   ];
-
-//   return (
-//   <section id="features" className="py-24 bg-white"> {/* py-20 se py-24 kiya for more breathing space */}
-    
-//     {/* 1. Top Badge */}
-//     <div className="flex items-center gap-2 w-fit mx-auto mb-4 text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-5 py-2 shadow-sm transition-all hover:bg-emerald-100">
-//       <Zap size={14} className="text-emerald-500 fill-emerald-500" />
-//       <span className="tracking-wide">Simple Process</span>
-//     </div>
-
-//     {/* 2. Main Title Component */}
-  
-//     <div className="mb-20"> 
-//       <Title 
-//         title="Build your resume"
-//         description="Our streamlined process helps you create a professional resume in minutes with intelligent AI-powered tools and features." 
-//       />
-//     </div>
-
-//     <div className="max-w-7xl mx-auto px-6">
-//       {/* 3. Why Choose Section - Updated Colors & Spacing */}
-//       <div className="text-center mb-16">
-//         <h2 className="text-4xl font-bold text-slate-900 mb-6">
-//           Why Choose <span className="text-emerald-600">ResuMate AI?</span> {/* Indigo ko Emerald kiya */}
-//         </h2>
-//         <div className="h-1.5 w-20 bg-emerald-500 mx-auto mb-6 rounded-full"></div> {/* Choti divider line consistency ke liye */}
-//         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-//           Experience the future of job hunting with our cutting-edge AI features designed to get you hired faster.
-//         </p>
-//       </div>
-
-//       {/* 4. Features Bento-Style Grid */}
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//         {featureList.map((feature, index) => (
-//           <div 
-//             key={index}
-//             className={`p-8 rounded-2xl border ${feature.border} ${feature.bg} transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer group`}
-//           >
-//             <div className="mb-4 p-3 bg-white rounded-lg w-fit shadow-sm group-hover:scale-110 transition-transform">
-//               {feature.icon}
-//             </div>
-//             <h3 className="text-xl font-bold text-slate-800 mb-2">{feature.title}</h3>
-//             <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   </section>
-// );
-// };
-
-// export default Features;
-
-import React from 'react'
-import { Brain, Zap, Shield, FileText, Share2, Sparkles } from 'lucide-react';
-import Title from './Title';
+import React from 'react';
+import { Sparkles, Target, Brain, Shield } from 'lucide-react';
 
 const Features = () => {
   const featureList = [
     {
-  title: "AI Resume Builder",
-  desc: "Generate professional bullet points and summaries tailored to your target job role instantly.",
-  icon: <Sparkles className="size-6 text-green-600" />,
-  bg: "bg-green-50/50",
-  border: "border-green-100"
-},
+      title: "AI Resume Builder",
+      desc: "Generate professional bullet points and summaries tailored to your target job role instantly.",
+      icon: <Sparkles className="size-6 text-emerald-400" />,
+      color: "emerald"
+    },
     {
       title: "AI Resume Analyzer",
-      desc: "Get real-time feedback and scoring based on your job target.",
-      icon: <Brain className="size-6 text-emerald-600" />,
-      bg: "bg-emerald-50/50",
-      border: "border-emerald-100"
+      desc: "Get real-time feedback and scoring based on your job target with actionable insights.",
+      icon: <Brain className="size-6 text-indigo-400" />,
+      color: "indigo"
     },
     {
       title: "ATS Optimization",
-      desc: "Our AI ensures your resume passes through recruiter filters easily.",
-      icon: <Zap className="size-6 text-green-600" />,
-      bg: "bg-green-50/50",
-      border: "border-green-100"
+      desc: "Our AI ensures your resume passes through recruiter filters easily by matching industry standards.",
+      icon: <Target className="size-6 text-blue-400" />,
+      color: "blue"
     },
     {
       title: "Privacy First",
-      desc: "Your data is encrypted and safe with bank-grade security protocols.",
-      icon: <Shield className="size-6 text-emerald-600" />,
-      bg: "bg-emerald-50/50",
-      border: "border-emerald-100"
-    },
-    {
-      title: "Smart Templates",
-      desc: "Professional layouts designed by recruiters for maximum impact.",
-      icon: <FileText className="size-6 text-green-600" />,
-      bg: "bg-green-50/50",
-      border: "border-green-100"
-    },
-    {
-      title: "Instant Sharing",
-      desc: "Generate a live link to share your resume with employers instantly.",
-      icon: <Share2 className="size-6 text-emerald-600" />,
-      bg: "bg-emerald-50/50",
-      border: "border-emerald-100"
-    },
-   
+      desc: "Your data is encrypted and safe with bank-grade security protocols for total peace of mind.",
+      icon: <Shield className="size-6 text-emerald-400" />,
+      color: "emerald"
+    }
   ];
 
   return (
-    <section id="features" className="py-24 bg-white font-poppins">
-      
-      {/* 1. Top Badge - Keeping it clean and professional */}
-      <div className="flex items-center gap-2 w-fit mx-auto mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-5 py-2 shadow-sm transition-all hover:bg-emerald-100">
-        <Sparkles size={12} className="text-emerald-500 fill-emerald-500" />
-        <span>AI-Powered Features</span>
-      </div>
-
-      {/* 2. Main Title Component (Updated as per your request) */}
-      <div className="mb-20"> 
-        <Title 
-          title="Build your resume"
-          description="Our streamlined process helps you create a professional resume in minutes with intelligent AI-powered tools and features." 
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6">
-        {/* 3. Section Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">
-            Why Choose <span className="text-emerald-600">ResuMate AI?</span>
+    <section id="features" className="py-24 bg-[#0B0F1A] font-sans">
+      <div className="max-w-5xl mx-auto px-6">
+        
+        {/* --- Header --- */}
+        <div className="text-left mb-20 border-l-4 border-emerald-500 pl-8">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            Why Choose <span className="text-emerald-500">ResuMate AI?</span>
           </h2>
-          <div className="h-1.5 w-20 bg-emerald-500 mx-auto mb-6 rounded-full"></div>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-slate-400 max-w-xl text-lg font-medium leading-relaxed">
             Experience the future of job hunting with our cutting-edge AI features designed to get you hired faster.
           </p>
         </div>
 
-        {/* 4. Features Bento-Style Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featureList.map((feature, index) => (
-            <div 
-              key={index}
-              className={`p-8 rounded-[2rem] border ${feature.border} ${feature.bg} transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-emerald-100 hover:-translate-y-2 cursor-pointer group relative overflow-hidden`}
-            >
-              {/* Subtle Decorative Glow */}
-              <div className="absolute -right-4 -top-4 size-20 bg-emerald-400/5 blur-2xl group-hover:bg-emerald-400/10 transition-all"></div>
+        <div className="relative space-y-1">
+          <div className="absolute left-[27px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-emerald-500/50 via-indigo-500/50 to-transparent hidden md:block"></div>
 
-              <div className="mb-6 p-4 bg-white rounded-2xl w-fit shadow-md group-hover:bg-emerald-600 transition-all duration-300">
-                {/* Clone icon to handle hover color change */}
-                {React.cloneElement(feature.icon, { 
-                  className: `size-7 transition-colors duration-300 ${feature.icon.props.className} group-hover:text-white` 
-                })}
+          {featureList.map((feature, index) => (
+            <div key={index} className="relative pl-0 md:pl-20 py-12 group">
+              
+              {/* Timeline Dot/Icon */}
+              <div className="absolute left-0 top-12 hidden md:flex size-14 rounded-2xl bg-slate-900 border border-slate-800 items-center justify-center z-10 group-hover:border-emerald-500/50 transition-all duration-500 shadow-2xl">
+                {feature.icon}
+                {/* Subtle Glow */}
+                <div className="absolute inset-0 bg-emerald-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
 
-              <h3 className="text-xl font-extrabold text-slate-800 mb-3 tracking-tight group-hover:text-emerald-700 transition-colors">
-                {feature.title}
-              </h3>
-              
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base opacity-80 group-hover:opacity-100 transition-opacity">
-                {feature.desc}
-              </p>
+              {/* Content Side */}
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800">
+                    {feature.icon}
+                  </div>
+                  <span className="text-emerald-500 font-black text-xs uppercase tracking-[0.3em]">
+                    Feature 0{index + 1}
+                  </span>
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-emerald-400 transition-colors">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-slate-400 text-lg leading-relaxed font-medium">
+                  {feature.desc}
+                </p>
+              </div>
+
+              <div className="mt-12 h-[1px] w-full bg-gradient-to-r from-slate-800 to-transparent md:hidden"></div>
             </div>
           ))}
         </div>
