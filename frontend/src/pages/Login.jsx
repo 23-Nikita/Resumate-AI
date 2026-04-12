@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { login } from "../app/features/authSlice";
+import api from "../configs/api";
 
 const Login = () => {
     const dispatch = useDispatch()

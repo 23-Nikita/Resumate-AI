@@ -35,7 +35,7 @@ const Analyzer = () => {
                         <BrainCircuit className='relative text-emerald-500 animate-pulse' size={80} />
                     </div>
                     <div className="text-center">
-                        <h1 className='text-3xl font-black tracking-tighter'>Analyzing Your DNA...</h1>
+                        <h1 className='text-3xl font-black tracking-tighter'>Analyzing Your Resume...</h1>
                         <p className="text-slate-500 mt-2 font-medium tracking-widest uppercase text-[10px]">AI is scanning skills & matching requirements</p>
                     </div>
                 </div>
