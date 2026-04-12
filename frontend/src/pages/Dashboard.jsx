@@ -186,7 +186,7 @@ const Dashboard = () => {
                         </button>
 
                         <h2 className='text-2xl font-black text-white uppercase tracking-tighter mb-8'>
-                            {showCreateResume ? "Initialize Builder" : showUploadResume ? "Neural Analysis" : "Rename Archive"}
+                            {showCreateResume ? "Crearte Resume" : showUploadResume ? "Upload Resume" : "Rename Archive"}
                         </h2>
 
                         <form onSubmit={showCreateResume ? createResume : showUploadResume ? uploadResume : editTitle} className='space-y-6'>
@@ -211,7 +211,7 @@ const Dashboard = () => {
                                 {isLoading ? <LoaderCircleIcon className='animate-spin size-5'/> : 
                                     <>
                                         {showUploadResume && <Sparkles className="size-4" />}
-                                        {showCreateResume ? "Launch Component" : showUploadResume ? "Begin Extraction" : "Save Changes"}
+                                        {showCreateResume ? "Create Resume" : showUploadResume ? "  Upload Resume" : "Save Changes"}
                                     </>
                                 }
                             </button>
