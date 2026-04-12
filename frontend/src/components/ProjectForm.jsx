@@ -1,4 +1,4 @@
-import { Plus, Trash2, Github, ExternalLink } from 'lucide-react';
+import { Plus, Trash2, Github, ExternalLink, Box } from 'lucide-react';
 import React from 'react'
 
 export default function ProjectForm({data, onChange}) {
@@ -7,10 +7,9 @@ export default function ProjectForm({data, onChange}) {
             name: "",
             type: "",
             description: "",
-            github_link: "", // NEW: Added for model consistency
-            live_link: "",   // NEW: Added for model consistency
+            github_link: "", 
+            live_link: "",   
         };
-
         onChange([...data , newProject])
     }
 
@@ -26,89 +25,98 @@ export default function ProjectForm({data, onChange}) {
     }
 
   return (
-     <div>
-        <div className='flex items-center justify-between'>
+     <div className='w-full'>
+        {/* Header Section */}
+        <div className='flex items-center justify-between mb-6'>
           <div>
-           <h3 className='flex items-center gap-2 text-lg font-semibold text-gray-900'>
-            Projects
-           </h3>
-           <p className='text-sm text-gray-500'>Showcase your best work with links</p>
+            <h3 className='text-lg font-bold text-white tracking-tight flex items-center gap-2'>
+              <Box size={18} className="text-emerald-500" /> Projects
+            </h3>
+            <p className='text-xs text-slate-500 font-medium uppercase tracking-wider'>Showcase your best work with links</p>
           </div>
 
           <button
-          onClick={addProject}
-          className='flex items-center gap-2 px-3 py-1 text-sm bg-purple-100
-          text-purple-700 rounded hover:bg-purple-200 transition-colors'>
-             <Plus className='size-4' />
-              Add Project
+            onClick={addProject}
+            className='flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest bg-emerald-500 text-slate-950 rounded-xl hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/10'
+          >
+            <Plus className='size-3.5 stroke-[3]' />
+            Add Project
           </button>
         </div>
 
-          <div className='space-y-4 mt-6 '>
-            {data.map((project, index)=>(
-                <div key={index} className='p-4 border border-gray-200 rounded-lg space-y-3 bg-white'>
+        {/* Projects List */}
+        <div className='space-y-6'>
+          {data.map((project, index)=>(
+            <div key={index} className='group relative p-6 bg-slate-900/40 border border-slate-800 rounded-[2rem] space-y-4 hover:border-emerald-500/30 transition-all duration-300'>
+                
+                {/* Project Number & Delete */}
+                <div className='flex justify-between items-center'>
+                    <div className='flex items-center gap-2'>
+                        <span className='flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black'>
+                            {index + 1}
+                        </span>
+                        <h4 className='text-[11px] font-black text-slate-400 uppercase tracking-[0.2em]'>Project Details</h4>
+                    </div>
 
-                        <div className='flex justify-between items-start'>
-                            <h4 className='font-medium text-slate-700'>Project #{index + 1}</h4>
-
-                            <button
-                            onClick={()=>removeProject(index)}
-                            className='text-red-400 hover:text-red-600 transition-colors'>
-                                <Trash2 className='size-4' />
-                            </button>
-                        </div>
-
-                        <div className='grid gap-3'>
-                                <input
-                                value={project.name  || ""}
-                                onChange={(e)=> updateProject(index, "name", e.target.value)}
-                                type="text"
-                                placeholder='Project Name (e.g. StaySpot)'
-                                className='px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-emerald-400'
-                                />
-                                
-                                <input
-                                value={project.type  || ""}
-                                onChange={(e)=> updateProject(index, "type", e.target.value)}
-                                type="text"
-                                placeholder='Tech Stack (e.g. MERN, Next.js 15)'
-                                className='px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-emerald-400'
-                                />
-
-                                {/* NEW: GitHub Link Input */}
-                                <div className='relative'>
-                                    <Github className='absolute left-3 top-2.5 size-4 text-gray-400' />
-                                    <input
-                                    value={project.github_link || ""}
-                                    onChange={(e)=> updateProject(index, "github_link", e.target.value)}
-                                    type="text"
-                                    placeholder='GitHub Repository Link'
-                                    className='w-full pl-10 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-emerald-400'
-                                    />
-                                </div>
-
-                                {/* NEW: Live Demo Link Input */}
-                                <div className='relative'>
-                                    <ExternalLink className='absolute left-3 top-2.5 size-4 text-gray-400' />
-                                    <input
-                                    value={project.live_link || ""}
-                                    onChange={(e)=> updateProject(index, "live_link", e.target.value)}
-                                    type="text"
-                                    placeholder='Live Demo Link (Render/Vercel)'
-                                    className='w-full pl-10 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-emerald-400'
-                                    />
-                                </div>
-
-                                <textarea
-                                value={project.description || ""}
-                                onChange={(e)=> updateProject(index, "description", e.target.value)}
-                                placeholder='Describe what you built and the features...'
-                                className='w-full px-3 py-2 text-sm border border-gray-200 rounded-lg resize-none min-h-[100px] focus:outline-emerald-400'
-                                />
-                        </div>
+                    <button
+                        onClick={()=>removeProject(index)}
+                        className='p-2 text-slate-600 hover:text-rose-500 hover:bg-rose-500/10 rounded-full transition-all'
+                    >
+                        <Trash2 className='size-4' />
+                    </button>
                 </div>
-            ))}
-          </div>
-    </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    <input
+                        value={project.name  || ""}
+                        onChange={(e)=> updateProject(index, "name", e.target.value)}
+                        type="text"
+                        placeholder='Project Name (e.g. StaySpot)'
+                        className='w-full bg-slate-900 border border-slate-800 text-slate-200 px-4 py-2.5 rounded-xl text-sm placeholder:text-slate-700 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all'
+                    />
+                    
+                    <input
+                        value={project.type  || ""}
+                        onChange={(e)=> updateProject(index, "type", e.target.value)}
+                        type="text"
+                        placeholder='Tech Stack (e.g. MERN Stack)'
+                        className='w-full bg-slate-900 border border-slate-800 text-slate-200 px-4 py-2.5 rounded-xl text-sm placeholder:text-slate-700 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all'
+                    />
+
+                    {/* GitHub Link */}
+                    <div className='relative'>
+                        <Github className='absolute left-4 top-3 size-4 text-slate-600 group-focus-within:text-emerald-500 transition-colors' />
+                        <input
+                            value={project.github_link || ""}
+                            onChange={(e)=> updateProject(index, "github_link", e.target.value)}
+                            type="text"
+                            placeholder='GitHub Repository Link'
+                            className='w-full pl-11 pr-4 py-2.5 bg-slate-900 border border-slate-800 text-slate-200 rounded-xl text-sm placeholder:text-slate-700 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all'
+                        />
+                    </div>
+
+                    {/* Live Demo Link */}
+                    <div className='relative'>
+                        <ExternalLink className='absolute left-4 top-3 size-4 text-slate-600 group-focus-within:text-emerald-500 transition-colors' />
+                        <input
+                            value={project.live_link || ""}
+                            onChange={(e)=> updateProject(index, "live_link", e.target.value)}
+                            type="text"
+                            placeholder='Live Demo Link'
+                            className='w-full pl-11 pr-4 py-2.5 bg-slate-900 border border-slate-800 text-slate-200 rounded-xl text-sm placeholder:text-slate-700 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all'
+                        />
+                    </div>
+                </div>
+
+                <textarea
+                    value={project.description || ""}
+                    onChange={(e)=> updateProject(index, "description", e.target.value)}
+                    placeholder='Describe your project features and your role...'
+                    className='w-full bg-slate-900 border border-slate-800 text-slate-200 px-4 py-3 rounded-xl text-sm placeholder:text-slate-700 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all resize-none min-h-[100px] leading-relaxed'
+                />
+            </div>
+          ))}
+        </div>
+     </div>
   )
 }

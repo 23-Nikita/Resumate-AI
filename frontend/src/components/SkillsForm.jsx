@@ -1,7 +1,7 @@
-import { Plus, Sparkles, X } from 'lucide-react'
+import { Plus, Sparkles, X, Terminal } from 'lucide-react'
 import React, { useState } from 'react'
 
-export default function SkillsForm({ data = [], onChange }) { // data=[] for safety
+export default function SkillsForm({ data = [], onChange }) { 
   const [newSkill, setNewSkill] = useState("")
 
   const addSkill = () => {
@@ -12,7 +12,6 @@ export default function SkillsForm({ data = [], onChange }) { // data=[] for saf
   }
 
   const removeSkill = (indexToRemove) => {
-    // onchange ko onChange kiya
     onChange(data.filter((_, index) => index !== indexToRemove))
   }
 
@@ -24,51 +23,67 @@ export default function SkillsForm({ data = [], onChange }) { // data=[] for saf
   }
 
   return (
-    <div className='space-y-4'>
-      <div>
-        <h3 className='flex items-center gap-2 text-lg font-semibold'>Skills</h3>
-        <p className='text-sm text-gray-500'>Add your technical and soft skills</p>
+    <div className='w-full'>
+      {/* Header Section */}
+      <div className='mb-6'>
+        <h3 className='text-lg font-bold text-white tracking-tight flex items-center gap-2'>
+          <Terminal size={18} className="text-emerald-500" /> Skills
+        </h3>
+        <p className='text-xs text-slate-500 font-medium uppercase tracking-wider'>Technical & Soft Skills</p>
       </div>
 
-      <div className='flex gap-2'>
-        <input 
-          type="text" 
-          placeholder='Enter a skill...' 
-          className='flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg' // border added
-          onChange={(e) => setNewSkill(e.target.value)}
-          value={newSkill}
-          onKeyDown={handleKeyPress}
-        />
+      {/* Input Section */}
+      <div className='flex gap-3 mb-6'>
+        <div className='flex-1 relative group'>
+          <input 
+            type="text" 
+            placeholder='e.g. React.js' 
+            className='w-full bg-slate-900/50 border border-slate-800 text-slate-200 px-4 py-2.5 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all text-sm placeholder:text-slate-700'
+            onChange={(e) => setNewSkill(e.target.value)}
+            value={newSkill}
+            onKeyDown={handleKeyPress}
+          />
+        </div>
         <button 
           onClick={addSkill} 
-          disabled={!newSkill.trim()} // trim() calls the function
-          className='flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50'
+          disabled={!newSkill.trim()} 
+          className='flex items-center gap-2 px-5 py-2.5 text-[10px] font-black uppercase tracking-widest bg-emerald-500 text-slate-950 rounded-xl hover:bg-emerald-400 disabled:opacity-30 transition-all shadow-lg shadow-emerald-500/10'
         >
-          <Plus className='size-4' /> Add
+          <Plus className='size-3.5 stroke-[3]' /> Add
         </button>
       </div>
 
+      {/* Skills Tags Area */}
       {data.length > 0 ? (
-        <div className='flex flex-wrap gap-2'>
-          {/* Changed {} to () for implicit return */}
+        <div className='flex flex-wrap gap-2 mb-6'>
           {data.map((skill, index) => (
-            <span key={index} className='flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm'>
+            <span 
+              key={index} 
+              className='group flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg text-[11px] font-bold uppercase tracking-wider hover:bg-emerald-500 hover:text-slate-950 transition-all'
+            >
               {skill}
-              <button onClick={() => removeSkill(index)} className='ml-1 hover:bg-blue-200 rounded-full p-0.5'>
-                <X className="w-3 h-3" />
+              <button 
+                onClick={() => removeSkill(index)} 
+                className='text-emerald-500/50 group-hover:text-slate-950 transition-colors'
+              >
+                <X className="w-3.5 h-3.5 stroke-[3]" />
               </button>
             </span>
           ))}
         </div>
       ) : (
-        <div className='text-center py-6 text-gray-500'>
-          <Sparkles className='w-10 h-10 mx-auto mb-2 text-gray-300' />
-          <p>No skills added yet.</p>
+        <div className='text-center py-10 bg-slate-900/30 rounded-[2rem] border border-dashed border-slate-800/50 mb-6'>
+          <Sparkles className='w-8 h-8 mx-auto mb-3 text-slate-700' />
+          <p className='text-xs font-bold text-slate-600 uppercase tracking-widest'>No skills added yet</p>
         </div>
       )}
 
-      <div className='bg-blue-50 p-3 rounded-lg'>
-        <p className='text-sm text-blue-800'><strong>Tip:</strong> Add 8-12 relevant skills.</p>
+      {/* Dynamic Tip Box */}
+      <div className='bg-slate-900/50 border-l-2 border-emerald-500 p-4 rounded-r-xl'>
+        <p className='text-[11px] font-medium text-slate-400 uppercase tracking-[0.05em]'>
+          <strong className='text-emerald-500 mr-1'>Pro Tip:</strong> 
+          {data.length < 8 ? "Aim for 8-12 skills to optimize for ATS." : "Great selection of skills!"}
+        </p>
       </div>
     </div>
   )
