@@ -21,9 +21,7 @@ const Hero = () => {
 
                         {/* Logo: ResuMate AI with proper spacing */}
                         <Link to="/" className="flex items-center gap-2 group transition-transform active:scale-95">
-                            <div className="p-1.5 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                                <Cpu size={18} className="text-emerald-500" />
-                            </div>
+                            
                             <span className="text-xl font-black text-white tracking-tight">
                                 <span className="mr-1">ResuMate</span> 
                                 <span className="text-emerald-500">AI</span>
