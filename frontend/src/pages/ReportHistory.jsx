@@ -13,7 +13,8 @@ const ReportsHistory = () => {
     }, [])
 
     const renderTitle = (report) => {
-        return report.title || report.jobTitle || "Resume Analysis";
+        return  "Resume Analysis";
+        
     };
 
     const handleDelete = async (e, id) => {
